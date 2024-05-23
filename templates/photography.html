@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details</title>
+    <style>
+           body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://i.pinimg.com/474x/a8/8f/e7/a88fe73297a73eb40ddaba40442f95f8.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        div {
+            width: 300px;
+            height: 360px;
+            padding: 36px;
+            font-size: 26px;
+            color: rgb(16, 15, 15);
+            background-color: rgb(252, 250, 250); /* Add background color with opacity */
+            border-radius: 10px; /* Add border radius for rounded corners */
+            text-align: center; /* Center align content */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .box {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: rgb(34, 90, 242);
+            color: #141313;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+   
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+        <label for="cards">Our Recent Gallery</label><br/>
+        <input type="file" id="cards" name="cards" class="box"/>
+        <label for="capacity">No of photos:</label><br />
+        <input type="text" id="catering" name="capacity" class="box" /><br /> 
+        <label for="capacity">Minimum Budget</label>
+        <input type="text" id="min_budget" name="min_budget" class="box" /><br />
+        <button>submit</button>
+        </form>
+        <script>
+            document.getElementById("eventForm").addEventListener("submit", function(event) {
+                // Get all checked checkboxes
+                var checkboxes = document.querySelectorAll('input[name="Services"]:checked');
+                var servicesArray = [];
+                checkboxes.forEach(function(checkbox) {
+                    servicesArray.push(checkbox.value);
+                });
+    
+                // Add the array of selected services as a hidden input to the form
+                var servicesInput = document.createElement('input');
+                servicesInput.setAttribute('type', 'hidden');
+                servicesInput.setAttribute('name', 'selectedServices');
+                servicesInput.setAttribute('value', servicesArray.join(','));
+                document.getElementById("eventForm").appendChild(servicesInput);
+            });
+        </script>
+    </div>
+</html>
